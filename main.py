@@ -38,6 +38,7 @@ except requests.exceptions.ConnectTimeout:
 scope = 'playlist-modify-public playlist-modify-private'
 
 # Checks if our OAuth is valid, and if not , it generates a new token saved in cache file it creates.
+# Remember to use same account on your browser and spotify as default email id is used by spotipy upon opening the browser.
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=os.getenv("SPOTIFY_CLIENT_ID"),
                                                client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
                                                redirect_uri="https://example.com",
@@ -71,6 +72,7 @@ for songs in track_uris:
     """Add songs to the playlist."""
     sp.playlist_add_items(playlist_id=playlist_id, items=[songs.rsplit(":")[-1]])
 print("We did it joe!") # ;)
+
 
 
 
